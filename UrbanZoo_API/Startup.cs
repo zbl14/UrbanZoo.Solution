@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using UrbanZoo.Models;
+using UrbanZoo.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace UrbanZoo
 {
@@ -23,6 +25,17 @@ namespace UrbanZoo
 
             services.AddDbContext<UrbanZooContext>(opt =>
                 opt.UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
+            
+            services.AddHttpContextAccessor();
+            
+            services.AddSingleton<IUriService>(o =>
+            {
+                var accessor = o.GetRequiredService<IHttpContextAccessor>();
+                var request = accessor.HttpContext.Request;
+                var uri = string.Concat(request.Scheme, "://", request.Host.ToUriComponent());
+                return new UriService(uri);
+            });
+            
             services.AddControllers();
             services.AddSwaggerGen();
         }

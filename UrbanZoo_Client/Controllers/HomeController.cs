@@ -20,7 +20,7 @@ namespace UrbanZoo.Controllers
 
         public IActionResult Index()
         {
-            return RedirectToAction("Index", "Features");
+            return View();
         }
 
         public IActionResult Privacy()
@@ -35,3 +35,4 @@ namespace UrbanZoo.Controllers
         }
     }
 }
+

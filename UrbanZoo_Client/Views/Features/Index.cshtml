@@ -1,6 +1,6 @@
 @using UrbanZoo.Models;
 @model List<UrbanZoo.Models.Feature>;
-  
+
 <h1>All Features:</h1>
 
 <ol>
@@ -21,7 +21,7 @@
     </ul>
     <a href="/Features/Details/@(feature.FeatureId)"><p>View Details</p></a>
    
-    @* <div id="map">
+     <div id="map">
         <script>
             // Initialize and add the map
             function initMap() {
@@ -46,7 +46,7 @@
     ></script>
 window.initMap = initMap;
         
-    </div> *@
+    </div> 
 
 }
 </ol>

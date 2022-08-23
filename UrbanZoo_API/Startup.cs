@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using UrbanZoo.Models;
 using UrbanZoo.Services;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 
 namespace UrbanZoo
 {
@@ -38,6 +40,16 @@ namespace UrbanZoo
             
             services.AddControllers();
             services.AddSwaggerGen();
+
+            services.AddApiVersioning(opt =>
+            {
+                opt.AssumeDefaultVersionWhenUnspecified = true;
+                opt.DefaultApiVersion = new ApiVersion(1, 0);
+                opt.ReportApiVersions = true;
+                opt.ApiVersionReader = ApiVersionReader.Combine(
+                    new HeaderApiVersionReader("X-Api-Version"),
+                    new QueryStringApiVersionReader("version"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

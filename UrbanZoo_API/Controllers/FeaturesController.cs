@@ -14,6 +14,8 @@ using UrbanZoo.Helpers;
 namespace UrbanZoo.Controllers
 {
     [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
     [ApiController]
     public class FeaturesController : ControllerBase
     {
@@ -27,6 +29,7 @@ namespace UrbanZoo.Controllers
         }
 
         //GET: api/Features
+        [MapToApiVersion("1.0")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Feature>>> GetFeatures()
         {
@@ -34,22 +37,24 @@ namespace UrbanZoo.Controllers
         }
 
         // Method to get paginated features; we couldn't figure out how to connect this with the client side, but left it in for documentation of our work
-        // [HttpGet] 
-        // public async Task<ActionResult<IEnumerable<Feature>>> GetPagedFeatures([FromQuery] PaginationFilter filter)
-        // {
-        //     var route = Request.Path.Value;
-        //     var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
-        //     var pagedData = await _db.Features
-        //        .Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
-        //        .Take(validFilter.PageSize)
-        //        .ToListAsync();
-        //     var totalRecords = await _db.Features.CountAsync();
-        //     // var response = await _db.Features.ToListAsync();
-        //     var pagedResponse = PaginationHelper.CreatePagedReponse<Feature>(pagedData, validFilter, totalRecords, uriService, route);
-        //     return Ok(pagedResponse);
-        // }
+        [MapToApiVersion("2.0")]
+        [HttpGet] 
+        public async Task<ActionResult<IEnumerable<Feature>>> GetFeatures([FromQuery] PaginationFilter filter)
+        {
+            var route = Request.Path.Value;
+            var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
+            var pagedData = await _db.Features
+               .Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
+               .Take(validFilter.PageSize)
+               .ToListAsync();
+            var totalRecords = await _db.Features.CountAsync();
+            // var response = await _db.Features.ToListAsync();
+            var pagedResponse = PaginationHelper.CreatePagedReponse<Feature>(pagedData, validFilter, totalRecords, uriService, route);
+            return Ok(pagedResponse);
+        }
 
         // GET: api/Features/5
+        [MapToApiVersion("1.0")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Feature>> GetFeature(int id)
         {
@@ -64,18 +69,19 @@ namespace UrbanZoo.Controllers
         }
 
         // Method edited to work with get paginated features; we couldn't figure out how to connect this with the client side, but left it in for documentation of our work
-        // [HttpGet("{id}")]
-        // public async Task<ActionResult<Feature>> GetFeature(int id)
-        // {
-        //     var feature = await _db.Features.FindAsync(id);
+        [MapToApiVersion("2.0")]
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Feature>> GetFeatureV2(int id)
+        {
+            var feature = await _db.Features.FindAsync(id);
 
-        //     if (feature == null)
-        //     {
-        //         return NotFound();
-        //     }
+            if (feature == null)
+            {
+                return NotFound();
+            }
 
-        //     return Ok(new Response<Feature>(feature));
-        // }
+            return Ok(new Response<Feature>(feature));
+        }
 
         // PUT: api/Features/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

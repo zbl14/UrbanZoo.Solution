@@ -17,8 +17,13 @@ namespace UrbanZoo.Controllers
       return View(allFeatures);
     }
 
+    public IActionResult Create()
+    {
+      return View();
+    }
+
     [HttpPost]
-    public IActionResult Index(Feature feature)
+    public IActionResult Create(Feature feature)
     {
       Feature.Post(feature);
       return RedirectToAction("Index");
@@ -49,4 +54,5 @@ namespace UrbanZoo.Controllers
       Feature.Delete(id);
       return RedirectToAction("Index");
     }
-  }}
+  }
+}

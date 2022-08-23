@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UrbanZoo.Models;
 
 namespace UrbanZoo_API.Migrations
 {
     [DbContext(typeof(UrbanZooContext))]
-    partial class UrbanZooContextModelSnapshot : ModelSnapshot
+    [Migration("20220823223947_StreetAddress_field")]
+    partial class StreetAddress_field
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

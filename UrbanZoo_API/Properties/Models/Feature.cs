@@ -24,6 +24,8 @@ namespace UrbanZoo.Models
         public bool Availability { get; set; } = true;
         [Required]
 
+
+        public string StreetAddress { get; set; }
         public string State { get; set; }
 
         public string City { get; set; }

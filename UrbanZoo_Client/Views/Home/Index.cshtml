@@ -1,8 +1,66 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model UrbanZoo.Models.Feature;
+
+@{
+  ViewData["Title"] = "Details";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md">
+      <h1>Feature Info:</h1>
+      <ul>
+        <li>Title: @Model.Title</li>
+        <li>Description: @Model.Description</li>
+        <li>State: @Model.State</li>
+        <li>City: @Model.City</li>
+        <li>Zipcode: @Model.Zipcode</li>
+        <li>Lattitude: @Model.Lat</li>
+        <li>Longitude: @Model.Lng</li>
+        <li>Post Date: @Model.CreatedDate</li>
+        <li>Feature ID: @Model.FeatureId</li>
+        <li>Availability: @Model.Availability</li>
+      </ul>
+      <br>
+<a href="/Features/Edit/@(Model.FeatureId)">
+  <p>Edit</p>
+</a>
+<a href="/Features">
+  <p>Return</p>
+</a>
+<a href="/Features/Delete/@(Model.FeatureId)">
+  <p>Delete Feature</p>
+</a>
+
+    </div>
+    <div class="col-md">
+
+      <div id="map">
+        <script>
+          // Initialize and add the map
+          function initMap()  {
+            // The location of Feature
+            const feature = { lat: @Model.Lat, lng: @Model.Lng };
+            // The map, centered at Feature location
+            const map = new google.maps.Map(document.getElementById("map"), {
+              zoom: 15,
+              center: feature,
+            });
+
+            const marker = new google.maps.Marker({
+              position: feature,
+              map,
+              title: "Hello",
+            });
+          }
+        </script>
+
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw-NRVYJN5qSsNTkATz59olsr0WR5IwVY&callback=initMap&v=weekly"
+          defer></script>
+        window.initMap = initMap;
+    </div>
+    <ul>
+        <p>@Model.Lat, @Model.Lng</p>
+    </ul>
+  </div>
 </div>

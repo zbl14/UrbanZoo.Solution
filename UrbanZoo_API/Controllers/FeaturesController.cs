@@ -122,6 +122,9 @@ namespace UrbanZoo.Controllers
         public async Task<ActionResult<Feature>> PostFeature([FromBody] Feature feature)
         {
             feature.CreatedDate = DateTime.Now;
+
+            // feature.Lat = 
+            // feature.Lng = 
             _db.Features.Add(feature);
             await _db.SaveChangesAsync();
 

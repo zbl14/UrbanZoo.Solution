@@ -1,0 +1,24 @@
+@model UrbanZoo.Models.Feature;
+
+@{
+  ViewData["Title"] = "Create";
+}
+
+<form action="/features" method="post">
+  <label for="title">Title</label>
+  <input id="title" name="title" type="text">
+
+  <label for="description">Description</label>
+  <input id="description" name="description" type="text">
+
+  <label for="streetAddress">Street Address</label>
+  <input id="streetAddress" name="streetAddress" type="text">
+
+  <label for="city">City</label>
+  <input id="city" name="city" type="text">
+
+  <label for="state">State</label>
+  <input id="state" name="state" type="text">
+
+  <button type="submit">Add Feature!</button>
+</form>

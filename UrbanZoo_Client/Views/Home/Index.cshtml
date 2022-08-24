@@ -5,7 +5,107 @@
 @using UrbanZoo.Models;
 @model List<UrbanZoo.Models.Feature>;
 
-<ol>
+
+<h1>All Features:</h1>
+
+<div class="container">
+    <div class="row">
+    <div class="col-md">  
+  
+    <div class="col-md">
+
+  <div id="map">
+        <script>
+                var map;
+                var InforObj = [];
+                var centerCords = {
+                    lat: -25.344,
+                    lng: 131.036
+                };
+
+                // @foreach (Feature feature in Model)
+                // var markersOnMap = @Html.Raw(Json.Encode(Model));
+                
+                // [{
+                //         placeName: "Australia (Uluru)",
+                //         LatLng: [{
+                //             lat: -25.344,
+                //             lng: 131.036
+                //         }]
+                //     },
+                // ];
+
+
+                window.onload = function () {
+                    initMap();
+                };
+        
+                function addMarker() {
+                    // for (var i = 0; i < markersOnMap.length; i++) {
+                    //     var contentString = '<div id="content"><h1>' + markersOnMap[i]['title'] +
+                    //         '</h1><p>Lorem ipsum dolor sit amet, vix mutat posse suscipit id, vel ea tantas omittam detraxit.</p></div>';
+        
+                    //     const marker = new google.maps.Marker({
+                    //         // position: Model[i].LatLng[0],
+                    //         position: {markersOnMap[i]['lat'], markersOnMap[i]['lng']},
+                    //         map: map
+                    //     });
+                    @foreach (Feature feature in Model)
+                    {
+                      var contentString = '<div id="content"><h1>' + @feature.Title + '</h1><p>@feature.Description</p></div>';
+
+                      const marker = new google.maps.Marker({
+                            position: {@feature.Lat, @feature.Lng},
+                            map: map
+                        });
+
+                    
+                        const infowindow = new google.maps.InfoWindow({
+                            content: contentString,
+                            maxWidth: 200
+                        });
+        
+                        marker.addListener('click', function () {
+                            closeOtherInfo();
+                            infowindow.open(marker.get('map'), marker);
+                            InforObj[0] = infowindow;
+                        });
+                  
+                    }
+                }
+                
+        
+                function closeOtherInfo() {
+                    if (InforObj.length > 0) {
+                        /* detach the info-window from the marker ... undocumented in the API docs */
+                        InforObj[0].set("marker", null);
+                        /* and close it */
+                        InforObj[0].close();
+                        /* blank the array */
+                        InforObj.length = 0;
+                    }
+                }
+        
+                function initMap() {
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 4,
+                        center: centerCords
+                    });
+                    addMarker();
+                }
+                
+        </script>
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw-NRVYJN5qSsNTkATz59olsr0WR5IwVY&callback=initMap&v=weekly"
+          defer></script>
+        window.initMap = initMap;
+    </div>
+    
+  </div>
+</div> 
+
+
+<!-- <ol>
 @foreach (Feature feature in Model)
 {
     <ul>
@@ -86,7 +186,7 @@
     </ul>
   </div>
 </div>
-*@
+*@ -->
 
 
 

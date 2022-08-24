@@ -1,18 +1,28 @@
-
 #map {
   width: 100%;
-  height: 100%;
-  /* The width is the width of the web page */
+  height: 200%;
+  margin-top:5%;
+  margin-bottom:10%;
+  border-radius: 20px;
+  border: 15px solid #ffffff;
+  box-shadow: 10px 10px 13px rgba(0, 0, 0, 0.5);
 }
 
-#map2 {
+#detailMap {
   width: 100%;
-  height: 500px;
+  height: 100%;
+  margin-top:5%;
+  margin-right:30%;
+  border-radius: 20px;
+  border: 15px solid #ffffff;
+  box-shadow: 10px 10px 13px rgba(0, 0, 0, 0.5);
   /* The width is the width of the web page */
 }
 
 html {
   font-size: 14px;
+  position: relative;
+  min-height: 100%;
 }
 
 @media (min-width: 768px) {
@@ -21,11 +31,47 @@ html {
   }
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+body {
+  background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/044/469/original/60e57b55a4b231625652053862.jpg?1661376839);
+  margin-bottom: 70px;
+  background-repeat:no-repeat;
+background-size:contain;
+background-position:center;
+
 }
 
-body {
-  margin-bottom: 60px;
+#detailsInfo {
+  padding:10%;
+  margin-left:10%;
+  font-size:large;
+  font-weight:400;
+  color: #4FA035;
+}
+
+#footer {
+  position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(255, 255, 255);
+    height: auto;
+    width: 100vw;
+    padding-top: 5px;
+    padding-bottom:5px;
+    color: rgb(0, 0, 0);
+}
+
+#title {
+  color:#FBBE61;
+  font-weight: 800;
+  text-align: center;
+  margin-top: 10%;
+  font-size:70px;
+  text-shadow: 1px 6px 4px rgba(45, 124, 23, 0.4);
+/* color: #4FA035; */
+}
+
+header {
+  font-weight:400;
+  font-size:20px;
 }

@@ -5,10 +5,9 @@
     <style>
         /*  <span class="metadata-marker" style="display: none;" data-region_tag="css"></span>       Set the size of the div element that contains the map */
         #map {
-            height: 400px;
-            /* The height is 400 pixels */
+            height: 800px;
             width: 100%;
-            /* The width is the width of the web page */
+            margin-top:4%;
         }
     </style>
     <script type="text/javascript">
@@ -83,10 +82,7 @@
     <body>
     @model List<UrbanZoo.Models.Feature>;
 
-    <div class="text-center">
-        <h1 class="display-4">Welcome</h1>
-    </div>
-
+    <h1 id="title">Welcome to UrbanZoo 🦒</h1>
     <div id="map"></div>
 
     <script

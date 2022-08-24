@@ -5,16 +5,15 @@
 @using UrbanZoo.Models;
 @model List<UrbanZoo.Models.Feature>;
 
-
 <h1>All Features:</h1>
 
 <div class="container">
-    <div class="row">
+    @* <div class="row">
     <div class="col-md">  
   
-    <div class="col-md">
+    <div class="col-md"> *@
 
-  <div id="map">
+  <div id="map2">
         <script>
                 var map;
                 var InforObj = [];
@@ -22,44 +21,58 @@
                     lat: -25.344,
                     lng: 131.036
                 };
+                var markersOnMap = [{
+                        placeName: "Australia (Uluru)",
+                        LatLng: [{
+                            lat: 45.58868933,
+                            lng: -122.56404786
+                        }]
+                    },
+                    {
+                         placeName: "Australia (Melbourne)",
+                         LatLng: [{
+                             lat: 45.65467058,
+                             lng: -122.53756002
+                         }]
+                     },
+                     {
+                         placeName: "Australia (Canberra)",
+                         LatLng: [{
+                             lat: -35.299085,
+                             lng: 509.109615
+                         }]
+                     },
+                     {
+                        placeName: "Australia (Gold Coast)",
+                         LatLng: [{
+                             lat: -28.013044,
+                             lng: 513.425586
+                         }]
+                     },
+                     {
+                         placeName: "Australia (Perth)",
+                         LatLng: [{
+                             lat: -31.951994,
+                             lng: 475.858081
+                        }]
+                     }
+                ];
 
-                // @foreach (Feature feature in Model)
-                // var markersOnMap = @Html.Raw(Json.Encode(Model));
-                
-                // [{
-                //         placeName: "Australia (Uluru)",
-                //         LatLng: [{
-                //             lat: -25.344,
-                //             lng: 131.036
-                //         }]
-                //     },
-                // ];
 
-
-                window.onload = function () {
+                       window.onload = function () {
                     initMap();
                 };
         
                 function addMarker() {
-                    // for (var i = 0; i < markersOnMap.length; i++) {
-                    //     var contentString = '<div id="content"><h1>' + markersOnMap[i]['title'] +
-                    //         '</h1><p>Lorem ipsum dolor sit amet, vix mutat posse suscipit id, vel ea tantas omittam detraxit.</p></div>';
+                    for (var i = 0; i < markersOnMap.length; i++) {
+                        var contentString = '<div id="content"><h1>' + markersOnMap[i].placeName +
+                            '</h1><p>Lorem ipsum dolor sit amet, vix mutat posse suscipit id, vel ea tantas omittam detraxit.</p></div>';
         
-                    //     const marker = new google.maps.Marker({
-                    //         // position: Model[i].LatLng[0],
-                    //         position: {markersOnMap[i]['lat'], markersOnMap[i]['lng']},
-                    //         map: map
-                    //     });
-                    @foreach (Feature feature in Model)
-                    {
-                      var contentString = '<div id="content"><h1>' + @feature.Title + '</h1><p>@feature.Description</p></div>';
-
-                      const marker = new google.maps.Marker({
-                            position: {@feature.Lat, @feature.Lng},
+                        const marker = new google.maps.Marker({
+                            position: markersOnMap[i].LatLng[0],
                             map: map
                         });
-
-                    
+        
                         const infowindow = new google.maps.InfoWindow({
                             content: contentString,
                             maxWidth: 200
@@ -70,10 +83,18 @@
                             infowindow.open(marker.get('map'), marker);
                             InforObj[0] = infowindow;
                         });
-                  
+                        // marker.addListener('mouseover', function () {
+                        //     closeOtherInfo();
+                        //     infowindow.open(marker.get('map'), marker);
+                        //     InforObj[0] = infowindow;
+                        // });
+                        // marker.addListener('mouseout', function () {
+                        //     closeOtherInfo();
+                        //     infowindow.close();
+                        //     InforObj[0] = infowindow;
+                        // });
                     }
                 }
-                
         
                 function closeOtherInfo() {
                     if (InforObj.length > 0) {
@@ -87,106 +108,17 @@
                 }
         
                 function initMap() {
-                    map = new google.maps.Map(document.getElementById('map'), {
+                    map = new google.maps.Map(document.getElementById('map2'), {
                         zoom: 4,
                         center: centerCords
                     });
                     addMarker();
                 }
-                
         </script>
         <script
           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw-NRVYJN5qSsNTkATz59olsr0WR5IwVY&callback=initMap&v=weekly"
           defer></script>
-        window.initMap = initMap;
+        @* window.initMap = initMap; *@
     </div>
     
   </div>
-</div> 
-
-
-<!-- <ol>
-@foreach (Feature feature in Model)
-{
-    <ul>
-        <hr> 
-        <li>Title: @feature.Title</li>
-        <li>Description: @feature.Description</li>
-        <li>State: @feature.State</li>
-        <li>City: @feature.City</li>
-        <li>Zipcode: @feature.Zipcode</li>
-        <li>Lattitude: @feature.Lat</li>
-        <li>Longitude: @feature.Lng</li>
-        <li>Post Date: @feature.CreatedDate</li>
-        <li>Feature ID: @feature.FeatureId</li>
-        <li>Availability: @feature.Availability</li>
-    </ul>
-    <a href="/Features/Details/@(feature.FeatureId)"><p>View Details</p></a>
-}
-</ol> 
-
-@*
-<div class="container">
-  <div class="row">
-    <div class="col-md">
-      <h1>Feature Info:</h1>
-      <ul>
-        <li>Title: @Model.Title</li>
-        <li>Description: @Model.Description</li>
-        <li>State: @Model.State</li>
-        <li>City: @Model.City</li>
-        <li>Zipcode: @Model.Zipcode</li>
-        <li>Lattitude: @Model.Lat</li>
-        <li>Longitude: @Model.Lng</li>
-        <li>Post Date: @Model.CreatedDate</li>
-        <li>Feature ID: @Model.FeatureId</li>
-        <li>Availability: @Model.Availability</li>
-      </ul>
-      <br>
-<a href="/Features/Edit/@(Model.FeatureId)">
-  <p>Edit</p>
-</a>
-<a href="/Features">
-  <p>Return</p>
-</a>
-<a href="/Features/Delete/@(Model.FeatureId)">
-  <p>Delete Feature</p>
-</a>
-
-    </div>
-    <div class="col-md">
-
-      <div id="map">
-        <script>
-          // Initialize and add the map
-          function initMap()  {
-            // The location of Feature
-            const feature = { lat: @Model.Lat, lng: @Model.Lng };
-            // The map, centered at Feature location
-            const map = new google.maps.Map(document.getElementById("map"), {
-              zoom: 15,
-              center: feature,
-            });
-
-            const marker = new google.maps.Marker({
-              position: feature,
-              map,
-              title: "Hello",
-            });
-          }
-        </script>
-
-        <script
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw-NRVYJN5qSsNTkATz59olsr0WR5IwVY&callback=initMap&v=weekly"
-          defer></script>
-        window.initMap = initMap;
-    </div>
-    <ul>
-        <p>@Model.Lat, @Model.Lng</p>
-    </ul>
-  </div>
-</div>
-*@ -->
-
-
-

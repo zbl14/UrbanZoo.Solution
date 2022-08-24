@@ -9,6 +9,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md">
+      <div id="detailsInfo">
       <h1>Feature Info:</h1>
       <ul>
         <li>Title: @Model.Title</li>
@@ -32,18 +33,20 @@
 <a href="/Features/Delete/@(Model.FeatureId)">
   <p>Delete Feature</p>
 </a>
+</div>
 
     </div>
     <div class="col-md">
 
-      <div id="map">
+
+      <div id="detailMap">
         <script>
           // Initialize and add the map
           function initMap()  {
             // The location of Feature
             const feature = { lat: @Model.Lat, lng: @Model.Lng };
             // The map, centered at Feature location
-            const map = new google.maps.Map(document.getElementById("map"), {
+            const map = new google.maps.Map(document.getElementById("detailMap"), {
               zoom: 15,
               center: feature,
             });
@@ -62,7 +65,7 @@
         window.initMap = initMap;
     </div>
     <ul>
-        <p>@Model.Lat, @Model.Lng</p>
+        <!-- <p>@Model.Lat, @Model.Lng</p> -->
     </ul>
   </div>
 </div>

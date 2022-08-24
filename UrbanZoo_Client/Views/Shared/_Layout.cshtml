@@ -23,7 +23,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Features" asp-action="Create">Add a new feature</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Features" asp-action="Index">Go to feature list</a>
                         </li>
                     </ul>
                 </div>
@@ -36,7 +39,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer id="footer">
         <div class="container">
             &copy; 2022 - UrbanZoo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

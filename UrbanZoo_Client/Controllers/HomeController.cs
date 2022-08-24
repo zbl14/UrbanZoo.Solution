@@ -20,7 +20,8 @@ namespace UrbanZoo.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var allFeatures = Feature.GetFeatures();
+            return View(allFeatures);
         }
 
         public IActionResult Privacy()

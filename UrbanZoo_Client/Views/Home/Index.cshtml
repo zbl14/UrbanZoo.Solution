@@ -1,11 +1,31 @@
-﻿@* @using UrbanZoo.Models; *@
-@* @model List<UrbanZoo.Models.Feature>; *@
-@model UrbanZoo.Models.Feature;
-
-@{
-  ViewData["Title"] = "Details";
+﻿@{
+  ViewData["Title"] = "Home Page";
 }
 
+@using UrbanZoo.Models;
+@model List<UrbanZoo.Models.Feature>;
+
+<ol>
+@foreach (Feature feature in Model)
+{
+    <ul>
+        <hr> 
+        <li>Title: @feature.Title</li>
+        <li>Description: @feature.Description</li>
+        <li>State: @feature.State</li>
+        <li>City: @feature.City</li>
+        <li>Zipcode: @feature.Zipcode</li>
+        <li>Lattitude: @feature.Lat</li>
+        <li>Longitude: @feature.Lng</li>
+        <li>Post Date: @feature.CreatedDate</li>
+        <li>Feature ID: @feature.FeatureId</li>
+        <li>Availability: @feature.Availability</li>
+    </ul>
+    <a href="/Features/Details/@(feature.FeatureId)"><p>View Details</p></a>
+}
+</ol> 
+
+@*
 <div class="container">
   <div class="row">
     <div class="col-md">
@@ -66,5 +86,7 @@
     </ul>
   </div>
 </div>
+*@
+
 
 

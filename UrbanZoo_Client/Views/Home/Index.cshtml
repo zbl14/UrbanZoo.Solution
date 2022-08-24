@@ -1,124 +1,97 @@
-﻿@{
-  ViewData["Title"] = "Home Page";
-}
+﻿<!DOCTYPE html>
+<html>
 
-@using UrbanZoo.Models;
-@model List<UrbanZoo.Models.Feature>;
+<head>
+    <style>
+        /*  <span class="metadata-marker" style="display: none;" data-region_tag="css"></span>       Set the size of the div element that contains the map */
+        #map {
+            height: 400px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+    </style>
+    <script type="text/javascript">
+        var map;
+        var InforObj = [];
+        var centerCords = {
+            lat: 45.51523,
+            lng: -122.6783
+        };
 
-<h1>All Features:</h1>
+        var markersOnMap = @Html.Raw(Json.Serialize(Model));
 
-<div class="container">
-    @* <div class="row">
-    <div class="col-md">  
-  
-    <div class="col-md"> *@
+        var x = Console.WriteLine(markersOnMap);
 
-  <div id="map2">
-        <script>
-                var map;
-                var InforObj = [];
-                var centerCords = {
-                    lat: -25.344,
-                    lng: 131.036
-                };
-                var markersOnMap = [{
-                        placeName: "Australia (Uluru)",
-                        LatLng: [{
-                            lat: 45.58868933,
-                            lng: -122.56404786
-                        }]
-                    },
-                    {
-                         placeName: "Australia (Melbourne)",
-                         LatLng: [{
-                             lat: 45.65467058,
-                             lng: -122.53756002
-                         }]
-                     },
-                     {
-                         placeName: "Australia (Canberra)",
-                         LatLng: [{
-                             lat: -35.299085,
-                             lng: 509.109615
-                         }]
-                     },
-                     {
-                        placeName: "Australia (Gold Coast)",
-                         LatLng: [{
-                             lat: -28.013044,
-                             lng: 513.425586
-                         }]
-                     },
-                     {
-                         placeName: "Australia (Perth)",
-                         LatLng: [{
-                             lat: -31.951994,
-                             lng: 475.858081
-                        }]
-                     }
-                ];
+        window.onload = function () {
+            initMap();
+        };
 
+        function addMarkerInfo() {
+            for (var i = 0; i < markersOnMap.length; i++) {
+                var contentString = '<div id="content"><h1>' + markersOnMap[i]['title'] +
+                    '</h1><p>' + markersOnMap[i]['description'] + '</p></div>';
 
-                       window.onload = function () {
-                    initMap();
-                };
-        
-                function addMarker() {
-                    for (var i = 0; i < markersOnMap.length; i++) {
-                        var contentString = '<div id="content"><h1>' + markersOnMap[i].placeName +
-                            '</h1><p>Lorem ipsum dolor sit amet, vix mutat posse suscipit id, vel ea tantas omittam detraxit.</p></div>';
-        
-                        const marker = new google.maps.Marker({
-                            position: markersOnMap[i].LatLng[0],
-                            map: map
-                        });
-        
-                        const infowindow = new google.maps.InfoWindow({
-                            content: contentString,
-                            maxWidth: 200
-                        });
-        
-                        marker.addListener('click', function () {
-                            closeOtherInfo();
-                            infowindow.open(marker.get('map'), marker);
-                            InforObj[0] = infowindow;
-                        });
-                        // marker.addListener('mouseover', function () {
-                        //     closeOtherInfo();
-                        //     infowindow.open(marker.get('map'), marker);
-                        //     InforObj[0] = infowindow;
-                        // });
-                        // marker.addListener('mouseout', function () {
-                        //     closeOtherInfo();
-                        //     infowindow.close();
-                        //     InforObj[0] = infowindow;
-                        // });
-                    }
-                }
-        
-                function closeOtherInfo() {
-                    if (InforObj.length > 0) {
-                        /* detach the info-window from the marker ... undocumented in the API docs */
-                        InforObj[0].set("marker", null);
-                        /* and close it */
-                        InforObj[0].close();
-                        /* blank the array */
-                        InforObj.length = 0;
-                    }
-                }
-        
-                function initMap() {
-                    map = new google.maps.Map(document.getElementById('map2'), {
-                        zoom: 4,
-                        center: centerCords
-                    });
-                    addMarker();
-                }
-        </script>
-        <script
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw-NRVYJN5qSsNTkATz59olsr0WR5IwVY&callback=initMap&v=weekly"
-          defer></script>
-        @* window.initMap = initMap; *@
+                const marker = new google.maps.Marker({
+                    position: { lat: markersOnMap[i]['lat'], lng: markersOnMap[i]['lng']},
+                    map: map
+                });
+
+                const infowindow = new google.maps.InfoWindow({
+                    content: contentString,
+                    maxWidth: 200
+                });
+
+                marker.addListener('click', function () {
+                    closeOtherInfo();
+                    infowindow.open(marker.get('map'), marker);
+                    InforObj[0] = infowindow;
+                });
+                 marker.addListener('mouseover', function () {
+                    closeOtherInfo();
+                    infowindow.open(marker.get('map'), marker);
+                    InforObj[0] = infowindow;
+                 });
+                 marker.addListener('mouseout', function () {
+                    closeOtherInfo();
+                    infowindow.close();
+                    InforObj[0] = infowindow;
+                 });
+            }
+        }
+
+        function closeOtherInfo() {
+            if (InforObj.length > 0) {
+                /* detach the info-window from the marker ... undocumented in the API docs */
+                InforObj[0].set("marker", null);
+                /* and close it */
+                InforObj[0].close();
+                /* blank the array */
+                InforObj.length = 0;
+            }
+        }
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 9,
+                center: centerCords
+            });
+            addMarkerInfo();
+        }
+    </script>
+</head>
+    <body>
+    @model List<UrbanZoo.Models.Feature>;
+
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
     </div>
-    
-  </div>
+
+    <div id="map"></div>
+
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw-NRVYJN5qSsNTkATz59olsr0WR5IwVY&callback=initMap&v=weekly"
+        defer>
+    </script>
+    </body>
+</html>

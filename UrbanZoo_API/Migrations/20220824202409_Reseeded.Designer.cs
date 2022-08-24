@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UrbanZoo.Models;
 
 namespace UrbanZoo_API.Migrations
 {
     [DbContext(typeof(UrbanZooContext))]
-    partial class UrbanZooContextModelSnapshot : ModelSnapshot
+    [Migration("20220824202409_Reseeded")]
+    partial class Reseeded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,7 +71,7 @@ namespace UrbanZoo_API.Migrations
                             FeatureId = 1,
                             Availability = true,
                             City = "Portland",
-                            CreatedDate = new DateTime(2022, 8, 24, 13, 46, 2, 324, DateTimeKind.Local).AddTicks(6150),
+                            CreatedDate = new DateTime(2022, 8, 24, 13, 24, 8, 746, DateTimeKind.Local).AddTicks(3300),
                             Description = "Owners welcome public feeding",
                             Lat = 45.471901500000001,
                             Lng = -122.6145719,
@@ -84,7 +86,7 @@ namespace UrbanZoo_API.Migrations
                             FeatureId = 2,
                             Availability = true,
                             City = "Portland",
-                            CreatedDate = new DateTime(2022, 8, 24, 13, 46, 2, 325, DateTimeKind.Local).AddTicks(9010),
+                            CreatedDate = new DateTime(2022, 8, 24, 13, 24, 8, 746, DateTimeKind.Local).AddTicks(8260),
                             Description = "Owners welcome public feeding",
                             Lat = 45.477027900000003,
                             Lng = -122.6174991,
@@ -99,7 +101,7 @@ namespace UrbanZoo_API.Migrations
                             FeatureId = 3,
                             Availability = true,
                             City = "Portland",
-                            CreatedDate = new DateTime(2022, 8, 24, 13, 46, 2, 325, DateTimeKind.Local).AddTicks(9050),
+                            CreatedDate = new DateTime(2022, 8, 24, 13, 24, 8, 746, DateTimeKind.Local).AddTicks(8280),
                             Description = "Can't feed the chickens",
                             Lat = 45.482752900000001,
                             Lng = 122.6164548,
@@ -114,7 +116,7 @@ namespace UrbanZoo_API.Migrations
                             FeatureId = 4,
                             Availability = true,
                             City = "Portland",
-                            CreatedDate = new DateTime(2022, 8, 24, 13, 46, 2, 325, DateTimeKind.Local).AddTicks(9060),
+                            CreatedDate = new DateTime(2022, 8, 24, 13, 24, 8, 746, DateTimeKind.Local).AddTicks(8280),
                             Description = "Owners welcome public feeding",
                             Lat = 45.486022800000001,
                             Lng = -122.6154899,
@@ -129,7 +131,7 @@ namespace UrbanZoo_API.Migrations
                             FeatureId = 5,
                             Availability = true,
                             City = "Portland",
-                            CreatedDate = new DateTime(2022, 8, 24, 13, 46, 2, 325, DateTimeKind.Local).AddTicks(9070),
+                            CreatedDate = new DateTime(2022, 8, 24, 13, 24, 8, 746, DateTimeKind.Local).AddTicks(8290),
                             Description = "Owners welcome public feeding",
                             Lat = 45.4846498,
                             Lng = -122.602384,
@@ -144,7 +146,7 @@ namespace UrbanZoo_API.Migrations
                             FeatureId = 6,
                             Availability = true,
                             City = "Portland",
-                            CreatedDate = new DateTime(2022, 8, 24, 13, 46, 2, 325, DateTimeKind.Local).AddTicks(9080),
+                            CreatedDate = new DateTime(2022, 8, 24, 13, 24, 8, 746, DateTimeKind.Local).AddTicks(8290),
                             Description = "Owners welcome public feeding",
                             Lat = 45.487687899999997,
                             Lng = -122.6109854,
@@ -159,7 +161,7 @@ namespace UrbanZoo_API.Migrations
                             FeatureId = 7,
                             Availability = true,
                             City = "Portland",
-                            CreatedDate = new DateTime(2022, 8, 24, 13, 46, 2, 325, DateTimeKind.Local).AddTicks(9090),
+                            CreatedDate = new DateTime(2022, 8, 24, 13, 24, 8, 746, DateTimeKind.Local).AddTicks(8290),
                             Description = "Behind chain linked fence",
                             Lat = 45.4895937,
                             Lng = -122.5959313,
@@ -174,7 +176,7 @@ namespace UrbanZoo_API.Migrations
                             FeatureId = 8,
                             Availability = true,
                             City = "Portland",
-                            CreatedDate = new DateTime(2022, 8, 24, 13, 46, 2, 325, DateTimeKind.Local).AddTicks(9090),
+                            CreatedDate = new DateTime(2022, 8, 24, 13, 24, 8, 746, DateTimeKind.Local).AddTicks(8300),
                             Description = "Bring minifigs to trade. On telephone poll near address listed https://www.instagram.com/portlandminifigs/?hl=en",
                             Lat = 45.491505199999999,
                             Lng = -122.6190095,
@@ -189,10 +191,10 @@ namespace UrbanZoo_API.Migrations
                             FeatureId = 9,
                             Availability = true,
                             City = "Portland",
-                            CreatedDate = new DateTime(2022, 8, 24, 13, 46, 2, 325, DateTimeKind.Local).AddTicks(9100),
+                            CreatedDate = new DateTime(2022, 8, 24, 13, 24, 8, 746, DateTimeKind.Local).AddTicks(8300),
                             Description = "Back alley path with large branches to climb on",
-                            Lat = 45.487687600000001,
-                            Lng = -122.6109854,
+                            Lat = 45.604418240000001,
+                            Lng = -122.8296801,
                             State = "OR",
                             StreetAddress = "4700 SE 50th Ave",
                             Title = "Secret passage way",
@@ -204,7 +206,7 @@ namespace UrbanZoo_API.Migrations
                             FeatureId = 10,
                             Availability = true,
                             City = "Portland",
-                            CreatedDate = new DateTime(2022, 8, 24, 13, 46, 2, 325, DateTimeKind.Local).AddTicks(9110),
+                            CreatedDate = new DateTime(2022, 8, 24, 13, 24, 8, 746, DateTimeKind.Local).AddTicks(8310),
                             Description = "Rose bushes growing over sidewalk. Smells good in summer",
                             Lat = 45.484494099999999,
                             Lng = -122.5972208,
@@ -219,7 +221,7 @@ namespace UrbanZoo_API.Migrations
                             FeatureId = 11,
                             Availability = true,
                             City = "Portland",
-                            CreatedDate = new DateTime(2022, 8, 24, 13, 46, 2, 325, DateTimeKind.Local).AddTicks(9110),
+                            CreatedDate = new DateTime(2022, 8, 24, 13, 24, 8, 746, DateTimeKind.Local).AddTicks(8310),
                             Description = "Arborvitae 'tunnel' over sidewalk with toys inside",
                             Lat = 45.486687199999999,
                             Lng = -122.6147603,
@@ -234,7 +236,7 @@ namespace UrbanZoo_API.Migrations
                             FeatureId = 12,
                             Availability = true,
                             City = "Portland",
-                            CreatedDate = new DateTime(2022, 8, 24, 13, 46, 2, 325, DateTimeKind.Local).AddTicks(9120),
+                            CreatedDate = new DateTime(2022, 8, 24, 13, 24, 8, 746, DateTimeKind.Local).AddTicks(8320),
                             Description = "Diorama featuring dinosaurs and friends. https://www.instagram.com/pdxdinorama/?hl=en",
                             Lat = 45.516819699999999,
                             Lng = -122.58544670000001,

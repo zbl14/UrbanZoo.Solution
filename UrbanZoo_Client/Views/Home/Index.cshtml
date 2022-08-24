@@ -15,8 +15,8 @@
         var map;
         var InforObj = [];
         var centerCords = {
-            lat: 45.51523,
-            lng: -122.6783
+            lat: 45.4876879,
+            lng: -122.6109854
         };
 
         var markersOnMap = @Html.Raw(Json.Serialize(Model));
@@ -73,7 +73,7 @@
 
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 9,
+                zoom: 13,
                 center: centerCords
             });
             addMarkerInfo();

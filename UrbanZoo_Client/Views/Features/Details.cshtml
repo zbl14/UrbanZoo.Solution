@@ -1,5 +1,3 @@
-@* @using UrbanZoo.Models; *@
-@* @model List<UrbanZoo.Models.Feature>; *@
 @model UrbanZoo.Models.Feature;
 
 @{
@@ -20,25 +18,22 @@
         <li>Lattitude: @Model.Lat</li>
         <li>Longitude: @Model.Lng</li>
         <li>Post Date: @Model.CreatedDate</li>
-        <li>Feature ID: @Model.FeatureId</li>
         <li>Availability: @Model.Availability</li>
       </ul>
       <br>
-<a href="/Features/Edit/@(Model.FeatureId)">
-  <p>Edit</p>
-</a>
-<a href="/Features">
-  <p>Return</p>
-</a>
-<a href="/Features/Delete/@(Model.FeatureId)">
-  <p>Delete Feature</p>
-</a>
+  <a href="/Features/Edit/@(Model.FeatureId)">
+    <p>Edit</p>
+  </a>
+  <a href="/Features">
+    <p>Return</p>
+  </a>
+  <a href="/Features/Delete/@(Model.FeatureId)">
+    <p>Delete Feature</p>
+  </a>
 </div>
 
     </div>
     <div class="col-md">
-
-
       <div id="detailMap">
         <script>
           // Initialize and add the map

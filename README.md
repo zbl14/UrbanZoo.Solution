@@ -26,7 +26,7 @@ Urban Zoo was built as part of a ‘Team Week’ at Epicodus where a group of st
 
 ### 🦠 Known Bugs
 
-* Posted Date of a location can't be updated correctly.
+* No known bugs, feel free to contact me here if any are found.
 
 ### 🛠 Built With
 
@@ -237,6 +237,11 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 
 #### [Epicodus](https://www.epicodus.com/)
 >"A school for tech careers... to help people learn the skills they need to get great jobs."
+
+------------------------------
+
+### Fixed Bugs
+* Posted Date of a location can't be updated correctly (Fixed on Aug 25, 2022)
 
 ------------------------------
 

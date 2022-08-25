@@ -74,7 +74,7 @@ Urban Zoo was built as part of a ‘Team Week’ at Epicodus where a group of st
 
   #### Cloning
 
-  1) Navigate to the [UrbanZoo repository here](https://github.com/derrak/UrbanZoo.Solution).
+  1) Navigate to the [UrbanZoo repository here](https://github.com/zbl14/UrbanZoo.Solution.git).
   2) Click 'Clone or download' to reveal the HTTPS url ending with .git and the 'Download ZIP' option.
   3) Open up your system Terminal or GitBash, navigate to your desktop with the command: `cd Desktop`, or whichever location suits you best.
   4) Clone the repository to your desktop: `$ git clone https://github.com/derrak/UrbanZoo.Solution`

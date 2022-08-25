@@ -88,6 +88,7 @@ namespace UrbanZoo.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutFeature(int id, Feature feature)
         {
+            feature.CreatedDate = DateTime.Now;
             if (id != feature.FeatureId)
             {
                 return BadRequest();

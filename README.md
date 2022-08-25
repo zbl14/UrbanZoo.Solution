@@ -1,42 +1,43 @@
-## Free Feature Finder API
+## Urban Zoo API and Client
 ------------------------------
 ### <u>Table of Contents</u>
 * <a href="#🌐-about-the-project">About the Project</a>
     * <a href="#📖-description">Description</a>
     * <a href="#🦠-known-bugs">Known Bugs</a>
     * <a href="#🛠-built-with">Built With</a>
-    <!-- * <a href="#🔍-preview">Preview</a> -->
 * <a href="#🏁-getting-started">Getting Started</a>
     * <a href="#📋-prerequisites">Prerequisites</a>
     * <a href="#⚙️-setup-and-use">Setup and Use</a>
-    * <a href="#🛰️-api-documentation">API Documentation</a>
+    * <a href="#🛰️-api-documentation">API Documentation</a> 
+* <a href="#🤝-contributors">Contributors</a>
 * <a href="#⚖️-license">License</a>
-    <!-- * <a href="#🌟-acknowledgements">Acknowledgements</a> -->
-    <!-- * <a href="#🤝-contributors">Contributors</a>
-    * <a href="#✉️-contact-and-support">Contact</a> -->
-    
+* <a href="#🌟-acknowledgments">Acknowledgements</a> 
+
+
 ------------------------------
 
 ## 🌐 About the Project
+Web app employing .NET MVC web framework, calls to Google’s web mapping API, and mySQL to store and display user generated points on a map. 
 
 ### 📖 Description
-An API the serves as the back-end connector to a database which stores and serves user created entries documenting items left for free on curbs around town. 
+This web app serves as a way to collectively document and discover interesting places to explore around your neighborhood. The original concept was conceived during the Covid lockdown, when most people avoided indoor spaces.
+Urban Zoo was built as part of a ‘Team Week’ at Epicodus where a group of students work together to design and build a project in one week based on what they’ve learned so far in the program. 
+
 
 ### 🦠 Known Bugs
 
-* None
+* Posted Date of a location can't be updated correctly.
 
 ### 🛠 Built With
-<!-- * [Ubuntu 18.04.5 LTS](https://releases.ubuntu.com/18.04/) -->
+
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)
 * [ASP.NET Core MVC](https://docs.microsoft.com/en-us/aspnet/core/mvc/overview?view=aspnetcore-5.0)
-* [MySQL 8.0.27](https://dev.mysql.com/)
+* [MySQL](https://dev.mysql.com/)
 * [Entity Framework Core 5.0.0](https://docs.microsoft.com/en-us/ef/core/)
+* [Google Maps API](https://developers.google.com/maps)
 * [Swagger](https://docs.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-swagger?view=aspnetcore-5.0)
 * [Postman](postman.com)
-
-<!-- ### 🔍 Preview -->
 
 ------------------------------
 
@@ -73,86 +74,100 @@ An API the serves as the back-end connector to a database which stores and serve
 
   #### Cloning
 
-  1) Navigate to the [UrbanZoo_API repository here](https://github.com/derrak/UrbanZoo_API).
+  1) Navigate to the [UrbanZoo repository here](https://github.com/derrak/UrbanZoo.Solution).
   2) Click 'Clone or download' to reveal the HTTPS url ending with .git and the 'Download ZIP' option.
   3) Open up your system Terminal or GitBash, navigate to your desktop with the command: `cd Desktop`, or whichever location suits you best.
-  4) Clone the repository to your desktop: `$ git clone https://github.com/derrak/UrbanZoo_API.git`
-  5) Run the command `cd UrbanZoo_API` to enter into the project directory.
+  4) Clone the repository to your desktop: `$ git clone https://github.com/derrak/UrbanZoo.Solution`
+  5) Run the command `cd UrbanZoo.Solution` to enter into the project directory.
   6) View or Edit:
-      * Code Editor - Run the command `atom .` or `code .` to open the project in Atom or VisualStudio Code respectively for review and editing.
+      * Code Editor - Run the command `code .` to open the project in Atom or VisualStudio Code respectively for review and editing.
       * Text Editor - Open by double clicking on any of the files to open in a text editor.
-
-  <!-- #### Download
-
-  1) Navigate to the [LunsfordSpace CoffeeTracker API repository here](https://github.com/LunsfordSpace/CoffeeTrackerAPI.Solution-API-ReadMe-Example).
-  2) Click 'Clone or download' to reveal the HTTPS url ending with .git and the 'Download ZIP' option.
-  3) Click 'Download ZIP' and unextract.
-  4) Open by double clicking on any of the files to open in a text editor. -->
 
   #### AppSettings
 
-  1) Create a new file in the UrbanZoo_API/UrbanZoo directory named `appsettings.json`
+  1) Create a new file in the UrbanZoo_API directory named `appsettings.json`
   2) Add in the following code snippet to the new appsettings.json file:
   
-  ```
+  ```json
 {
-    "Logging": {
-        "LogLevel": {
-        "Default": "Warning"
-        }
-    },
-    "AllowedHosts": "*",
-    "ConnectionStrings": {
-        "DefaultConnection": "Server=localhost;Port=3306;database=Free_Feature_Finder_API;uid=root;pwd=YourPassword;"
-    }
+  "Logging": {
+      "LogLevel": {
+      "Default": "Warning"
+      }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+      "DefaultConnection": "Server=localhost;Port=3306;database=UrbanZoo;uid=root;pwd=[YourPassword];"
+  }
 }
   ```
   3) Change the server, port, and user id as necessary. Replace 'YourPassword' with relevant MySQL password (set at installation of MySQL).
 
   #### Database
-  1) Navigate to UrbanZoo_API/UrbanZoo directory using the MacOS Terminal or Windows Powershell (e.g. `cd Desktop/UrbanZoo_API/UrbanZoo`).
+  1) Navigate to UrbanZoo_API directory using the MacOS Terminal or Windows Powershell.
   2) Run the command `dotnet ef database update` to generate the database through Entity Framework Core.
   3) (Optional) To update the database with any changes to the code, run the command `dotnet ef migrations add <MigrationsName>` which will use Entity Framework Core's code-first principle to generate a database update. After, run the previous command `dotnet ef database update` to update the database.
 
   #### Launch the API
-  1) Navigate to UrbanZoo_API/UrbanZoo directory using the MacOS Terminal or Windows Powershell (e.g. `cd Desktop/UrbanZoo_API/UrbanZoo`).
+  1) Navigate to UrbanZoo_API directory using the MacOS Terminal or Windows Powershell.
   2) Run the command `dotnet run` to have access to the API in Postman or browser.
 
+  #### Launch the Client Side
+  1) Navigate to UrbanZoo_Client directory using the MacOS Terminal or Windows Powershell.
+  2) Run the command `dotnet run` to have access to the site in the browser.
+  
 ------------------------------
 
 ## 🛰️ API Documentation
-Explore the API endpoints in Postman or a browser. You will not be able to utilize authentication in a browser.
+Explore the API endpoints in Postman or a browser. 
 
 ### Using Swagger Documentation 
 To explore the UrbanZoo API with NSwag, launch the project using `dotnet run` with the Terminal or Powershell, and input the following URL into your browser: `http://localhost:5000/swagger`
 
-<!-- ### Using the JSON Web Token
-In order to be authorized to use the POST, PUT, DELETE functionality of the API, please authenticate yourself through Postman.
-* Open Postman and create a POST request using the URL: `http://localhost:5000/api/users/authenticate`
-* Add the following query to the request as raw data in the Body tab:
-```
-{
-    "UserName": "CoffeeAdmin",
-    "Password": "epicodus"
-}
-```
-* The token will be generated in the response. Copy and paste it as the Token paramenter in the Authorization tab. -->
+### Note on Pagination
+The UrbanZoo_API version 2 returns a default of 5 results per page.
 
-<!-- ### Note on CORS
-CORS is a W3C standard that allows a server to relax the same-origin policy. It is not a security feature, CORS relaxes security. It allows a server to explicitly allow some cross-origin requests while rejecting others. An API is not safer by allowing CORS.
-For more information or to see how CORS functions, see the [Microsoft documentation](https://docs.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-2.2#how-cors). -->
-
-<!-- ### Note on Pagination
-The CoffeeTracker API returns a default of 25 results per page at a time, up to a maximum of 1000.
-
-To modify this, use the query parameters `limit` and `start` to alter the response results displayed. The `limit` parameter will specify how many results will be displayed, and the `start` parameter will specify which element in the response the limit should start counting. -->
+To modify this, use the query parameters `pageNumber` and `pageSize` to alter the response results displayed. The `pageNumber` parameter will specify which page will be displayed, and the `pageSize` parameter will specify how many result in the response and the maximum is 5.
 
 #### Example Query
 ```
-https://localhost:5000/api/features/
+https://localhost:5000/api/features/?version=2&pageNumber=2&pageSize=1
 ```
 
-To use default, _don't include_ `limit` and `start` or set them equal to zero.
+#### Sample JSON Response
+```json
+{
+    "pageNumber": 2,
+    "pageSize": 1,
+    "firstPage": "https://localhost:5001/api/Features/?pageNumber=1&pageSize=1",
+    "lastPage": "https://localhost:5001/api/Features/?pageNumber=10&pageSize=1",
+    "totalPages": 10,
+    "totalRecords": 10,
+    "nextPage": "https://localhost:5001/api/Features/?pageNumber=3&pageSize=1",
+    "previousPage": "https://localhost:5001/api/Features/?pageNumber=1&pageSize=1",
+    "data": [
+        {
+        "featureId": 3,
+        "userId": 0,
+        "title": "Chicken ",
+        "description": "Can't feed the chickens",
+        "createdDate": "0001-01-01T00:00:00",
+        "availability": true,
+        "streetAddress": "SE 45th Ave & SE Harold St",
+        "state": "OR",
+        "city": "Portland",
+        "lat": 45.4827529,
+        "lng": 122.6164548,
+        "zipcode": "97266"
+        }
+    ],
+    "succeeded": true,
+    "errors": null,
+    "message": null
+}
+```
+
+To use default, _don't include_ `version`, `pageNumber` and `pageSize`.
 
 ..........................................................................................
 
@@ -160,42 +175,7 @@ To use default, _don't include_ `limit` and `start` or set them equal to zero.
 Base URL: `https://localhost:5000`
 
 #### HTTP Request Structure
-```
-GET /api/{component}
-POST /api/{component}
-GET /api/{component}/{id}
-PUT /api/{component}/{id}
-DELETE /api/{component}/{id}
-```
-
-#### Example Query
-```
-https://localhost:5000/api/features/3
-```
-
-#### Sample JSON Response
-```
-{
-    "featureId": 3,
-    "userId": 3,
-    "title": "Sports equipment",
-    "description": "Sports equipment",
-    "createdDate": "2022-08-17T10:41:04",
-    "availability": true,
-    "state": "OR",
-    "city": "Portland",
-    "lat": 45.48192877,
-    "lng": -122.5580511,
-    "zipcode": "97266"
-}
-```
-
-..........................................................................................
-
-### Features
 Access information on Features from around the West Coast.
-
-#### HTTP Request
 ```
 GET /api/features
 POST /api/features
@@ -203,161 +183,60 @@ GET /api/features/{id}
 PUT /api/features/{id}
 DELETE /api/features/{id}
 ```
-..........................................................................................
-
-<!-- #### Path Parameters
-| Parameter | Type | Default | Required | Description |
-| :---: | :---: | :---: | :---: | --- |
-| name | string | none | false | Return matches by name.
-| origin | string | none | false | Return any bean from a specific country or region of origin. |
-| flavor | string | none | false | Return bean matches with a specific flavor profile. |
 
 #### Example Query
 ```
-https://localhost:5000/api/bean/?origin=brazil&flavor=robust
+https://localhost:5000/api/features/2
 ```
 
 #### Sample JSON Response
-```
+```json
 {
-    "Id": 114,
-    "Name": "Café Saboroso",
-    "Origin": "Brazil",
-    "Flavor: "Sweet, Cherry, Robust"
+    "featureId": 2,
+    "userId": 0,
+    "title": "Chicken",
+    "description": "Owners welcome public feeding",
+    "createdDate": "0001-01-01T00:00:00",
+    "availability": true,
+    "streetAddress": "SE 44th & SE Tolman",
+    "state": "OR",
+    "city": "Portland",
+    "lat": 45.4770279,
+    "lng": -122.6174991,
+    "zipcode": "98682"
 }
 ```
+------------------------------
 
+ ### 🤝 Contributors
 
-### Beverages
-Access information about popular coffee beverages.
-
-#### HTTP Request
-```
-GET /api/beverage
-POST /api/beverage
-GET /api/beverage/{id}
-PUT /api/beverage/{id}
-DELETE /api/beverage/{id}
-```
-
-#### Path Parameters
-| Parameter | Type | Default | Required | Description |
-| :---: | :---: | :---: | :---: | --- |
-| name | string | none | false | Return matches by name.
-| temp | string | none | false | Return beverage matches with a specific served temperature. |
-| topping | string | none | false | Return beverage matches with a specific topping. |
-| year | int | none | false | Return beverage matches with a specific year of invention. |
-
-#### Example Query
-```
-https://localhost:5000/api/beverage/?name=latte&temp=iced&year=1840
-```
-
-#### Sample JSON Response
-```
-{
-    "Id": 33,
-    "Name": "Iced Latte",
-    "Temp": "Iced",
-    "Topping: "Wipped Cream",
-    "Year": 1840
-}
-```
-
-..........................................................................................
-
-### Recipes
-Access recipes to recreate popular coffee beverages.
-
-#### HTTP Request
-```
-GET /api/recipe
-POST /api/recipe
-GET /api/recipe/{id}
-PUT /api/recipe/{id}
-DELETE /api/recipe/{id}
-```
-
-#### Path Parameters
-| Parameter | Type | Default | Required | Description |
-| :---: | :---: | :---: | :---: | --- |
-| name | string | none | false | Return matches by name.
-| ingredient | string | none | false | Return any recipe with a specific ingredient. |
-
-#### Example Query
-```
-https://localhost:5000/api/recipe/?name=latte&ingredient=chocolate
-```
-
-#### Sample JSON Response
-```
-{
-    "Id": 52,
-    "Name": "Mocha Latte",
-    "Ingredient": "Chocolate",
-    "Recipe Text: "Make good coffee, add chocolate, crash after experiencing the awesome power of both.",
-}
-```
-
------------------------------- -->
-
-<!-- ### 🤝 Contributors
-
-| Author | GitHub | Email |
-|--------|:------:|:-----:|
-| [Shawn Lunsford](https://linkedin.com/in/LunsfordSpace) | [LunsfordSpace](https://github.com/LunsfordSpace) |  [lunsford.sk@gmail.com](mailto:lunsford.sk@gmail.com) |
+>Derrak Richard [Email](derrak@gmail.com) || [GitHub](https://github.com/derrak) || [LinkedIn](https://www.linkedin.com/in/derrak-richard/)
+>
+>Zhibin Liang [Email](ifthereisoneday@gmail.com) || [GitHub](https://github.com/zbl14) || [LinkedIn](https://www.linkedin.com/in/zhibin-liang/)
+>
+>Mo Byrne [Email](mosey.b.byrne@gmail.com) || [GitHub](https://github.com/MoseyByrne) || [LinkedIn](https://www.linkedin.com/in/mosaic-byrne/)
+>
+>Winnie Wang [Email](weijwang18@gmail.com) || [GitHub](https://github.com/weijwang18) || [LinkedIn](https://www.linkedin.com/in/weijiewangseattle/)
+>
+>Alex Mcknight [Email](alex.mcknight11@gmail.com) || [GitHub](https://github.com/alex-mcknight11) || [LinkedIn](https://www.linkedin.com/in/alexmcknight11/)
+>
+>Tyler Emmerson [Email](tyleremmerson0216@gmail.com) || [GitHub](https://github.com/Emmersot) || [LinkedIn](https://www.linkedin.com/in/tyler-emmerson/)
+>
+>Jacob Palaoro [Email](jpalaoro197@users.noreply.github.com) || [GitHub](https://github.com/jpalaoro197) || [LinkedIn](https://www.linkedin.com/in/jacobpalaoro/)
 
 ------------------------------
 
-### ✉️ Contact and Support
-
-If you have any feedback or concerns, please contact one of the contributors.
-
-<p>
-    <a href="https://github.com/LunsfordSpace/CoffeeTrackerAPI.Solution-API-ReadMe-Example/issues">Report Bug</a> ·
-    <a href="https://github.com/LunsfordSpace/CoffeeTrackerAPI.Solution-API-ReadMe-Example/issues">Request Feature</a>
-</p> -->
-<!-- 
------------------------------- -->
-
 ### ⚖️ License
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). Copyright (C) 2022 Derrak Richard & Tyler Emmerson. All Rights Reserved.
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). Copyright (C) 2022 Derrak Richard && Zhibin Liang && Mo Byrne && Winnie Wang && Alex Mcknight && Tyler Emmerson && Jacob Palaoro. All Rights Reserved.
 
-```
-MIT License
 
-Copyright (c) 2022 Derrak Richard & Tyler Emmerson.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
-<!-- ------------------------------
+------------------------------
 
 ### 🌟 Acknowledgments
 
 #### [Epicodus](https://www.epicodus.com/)
 >"A school for tech careers... to help people learn the skills they need to get great jobs."
-
-#### [The Internet](https://webfoundation.org/)
-> "...the first thing that humanity has built that humanity doesn't understand..."
-> - Eric Schmidt, Google (Alphabet Inc.) -->
 
 ------------------------------
 

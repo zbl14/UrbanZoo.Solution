@@ -77,6 +77,12 @@
           </div>
         </div>
         <div class="form-group row mb-3">
+          <label for="createdDate" class="col-md-3 col-form-label">Update Date:</label>
+          <div class="col-md-6">
+            <input id="createdDate" name="CreatedDate" value="@DateTime.Now" class="form-control" disabled>
+          </div>
+        </div>
+        <div class="form-group row mb-3">
           <label for="availability" class="col-md col-form-label">Items no longer available or feature cannot be found:</label>
           <div class="col-md-6 mt-3">
             <input id="availability" name="availability" type="checkbox" @(Model.Availability ? "checked='checked'" : "")/>

@@ -35,9 +35,9 @@ body {
   background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/044/469/original/60e57b55a4b231625652053862.jpg?1661376839);
   margin-bottom: 70px;
   background-repeat:no-repeat;
-background-size:contain;
-background-position:center;
-
+  background-size:contain;
+  background-position:center;
+  background-attachment: fixed;
 }
 
 #detailsInfo {

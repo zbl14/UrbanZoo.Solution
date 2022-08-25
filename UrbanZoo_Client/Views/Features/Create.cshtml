@@ -3,29 +3,55 @@
 }
 
 <form action="/features" method="post">
-  <label for="title">Title</label>
-  <input id="title" name="title" type="text">
-
-  <label for="description">Description</label>
-  <input id="description" name="description" type="text">
-
-  <label for="streetAddress">Street Address</label>
-  <input id="streetAddress" name="streetAddress" type="text">
-
-  <label for="city">City</label>
-  <input id="city" name="city" type="text">
-
-  <label for="state">State</label>
-  <input id="state" name="state" type="text">
-
-  <label for="zipcode">Zipcode</label>
-  <input id="state" name="zipcode" type="text">
-
-  <label for="lat">Latitude</label>
-  <input id="lat" name="lat" type="number" step=any>
-
-  <label for="lng">Longtitude</label>
-  <input id="lng" name="lng" type="number" step=any>
-
-  <button type="submit">Add Feature!</button>
+  <div class="form-group row mb-3">
+    <label for="title" class="col-md-2 col-form-label">Title</label>
+    <div class="col-md-6">
+      <input id="title" name="title" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row mb-3">
+    <label for="description" class="col-md-2 col-form-label">Description</label>
+    <div class="col-md-6">
+      <input id="description" name="description" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row mb-3">
+    <label for="streetAddress" class="col-md-2 col-form-label">Street Address</label>
+    <div class="col-md-6">
+      <input id="streetAddress" name="streetAddress" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row mb-3">
+    <label for="city" class="col-md-2 col-form-label">City</label>
+    <div class="col-md-6">
+      <input id="city" name="city" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row mb-3">
+    <label for="state" class="col-md-2 col-form-label">State</label>
+    <div class="col-md-6">
+      <input id="state" name="state" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row mb-3">
+    <label for="zipcode" class="col-md-2 col-form-label">Zipcode</label>
+    <div class="col-md-6">
+      <input id="state" name="zipcode" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row mb-3">
+    <label for="lat" class="col-md-2 col-form-label">Latitude</label>
+    <div class="col-md-6">
+      <input id="lat" name="lat" type="number" step=any class="form-control">
+    </div>
+  </div>
+  <div class="form-group row mb-3">
+    <label for="lng" class="col-md-2 col-form-label">Longtitude</label>
+    <div class="col-md-6">
+      <input id="lng" name="lng" type="number" step=any class="form-control">
+    </div>
+  </div>
+  <div class="col-md-6 offset-md-2">
+    <button type="submit" class="btn btn-primary">Add Feature!</button>
+  </div>
 </form>

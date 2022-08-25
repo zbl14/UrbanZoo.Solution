@@ -16,7 +16,6 @@
         <li>Lattitude: @Model.Lat</li>
         <li>Longitude: @Model.Lng</li>
         <li>Post Date: @Model.CreatedDate</li>
-        <li>Feature ID: @Model.FeatureId</li>
         <li>Availability: @Model.Availability</li>
       </ul>
       <br>
@@ -27,17 +26,54 @@
     </div>
     <div class="col-md">
       <h1>Edit Info:</h1>
-      <form action="/Features/Details/@(Model.FeatureId)" method="put">
+      <form action="/Features/Details/@(Model.FeatureId)" method="post">
         <div class="form-group row mb-3">
-          <label for="title" class="col-md-2 col-form-label">Title:</label>
+          <label for="title" class="col-md-3 col-form-label">Title:</label>
           <div class="col-md-6">
             <input id="title" name="title" type="text" value="@(Model.Title)" class="form-control">
           </div>
         </div>
         <div class="form-group row mb-3">
-          <label for="description" class="col-md-2 col-form-label">Description:</label>
+          <label for="description" class="col-md-3 col-form-label">Description:</label>
           <div class="col-md-6">
             <input id="description" name="description" type="text" value="@(Model.Description)" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group row mb-3">
+          <label for="streetAddress" class="col-md-3 col-form-label">Street Address:</label>
+          <div class="col-md-6">
+            <input id="streetAddress" name="streetAddress" type="text" value="@(Model.StreetAddress)" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="state" class="col-md-3 col-form-label">State:</label>
+          <div class="col-md-6">
+            <input id="state" name="state" type="text" value="@(Model.State)" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="city" class="col-md-3 col-form-label">City:</label>
+          <div class="col-md-6">
+            <input id="city" name="city" type="text" value="@(Model.City)" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="lat" class="col-md-3 col-form-label">Lattitude:</label>
+          <div class="col-md-6">
+            <input id="lat" name="lat" type="number" step=any value="@(Model.Lat)" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="lng" class="col-md-3 col-form-label">Longitude:</label>
+          <div class="col-md-6">
+            <input id="lng" name="lng" type="number" step=any value="@(Model.Lng)" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="zipcode" class="col-md-3 col-form-label">Zipcode:</label>
+          <div class="col-md-6">
+            <input id="zipcode" name="zipcode" type="number" step=any value="@(Model.Zipcode)" class="form-control">
           </div>
         </div>
         <div class="form-group row mb-3">
@@ -50,7 +86,6 @@
           <button type="submit" class="btn btn-primary">Update info!</button>
         </div>
       </form>
-      <br>
       <br>
       <a href="/Features/Details/@(Model.FeatureId)"><p>Return to Details</p></a>
 
